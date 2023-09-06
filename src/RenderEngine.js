@@ -66,7 +66,7 @@ export default class RenderEngine {
     scene.add(camera);
 
     const controls = new OrbitControls(camera, canvas);
-    controls.enablePan = false;
+    // controls.enablePan = false;
 
     let currentTime = 0;
 

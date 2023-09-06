@@ -12,6 +12,7 @@ import {
   DRAW_MODE,
   Spherical,
   DRAW_SIDE,
+  Vector3,
 } from "t3d";
 import { Texture2DLoader } from "t3d/addons/loaders/Texture2DLoader.js";
 
@@ -46,6 +47,9 @@ export default class StarSystem extends Object3D {
   }
 
   update(deltaTime) {
+    this.starsContainer.children.forEach((star) => {
+      star.update(deltaTime);
+    });
     this.planetsContainer.children.forEach((planet) => {
       planet.update(deltaTime);
     });
@@ -56,7 +60,7 @@ const textureLoader = new Texture2DLoader();
 
 class Star extends Object3D {
   constructor(starData) {
-    const { name, texture, size, position } = starData;
+    const { name, texture, size, rotation } = starData;
 
     const geometry = new SphereGeometry(1, 64, 32);
 
@@ -79,13 +83,19 @@ class Star extends Object3D {
     this.add(mesh);
     this.add(pointLight);
 
-    this.position.fromArray(position);
+    // rotation
+    this._rotationSpeed = ((2 * Math.PI) / rotation.period) * 0.3;
+  }
+
+  update(deltaTime) {
+    // rotation
+    this.euler.y += this._rotationSpeed * deltaTime;
   }
 }
 
 class Planet extends Object3D {
   constructor(planetData) {
-    const { name, texture, size, ring, position } = planetData;
+    const { name, texture, size, ring, revolution, rotation } = planetData;
 
     const geometry = new SphereGeometry(size, 64, 32);
 
@@ -106,21 +116,29 @@ class Planet extends Object3D {
       this.add(new PlanetRing(planetData));
     }
 
-    this.position.fromArray(position);
-
     this._mesh = mesh;
-    this._orbitSpeed = (2 * Math.PI) / planetData.years;
-    this._currentTheta = Math.random() * 2 * Math.PI;
 
-    this._spherical = new Spherical();
-    this._spherical.phi = Math.PI / 2;
-    this._spherical.radius = position[0];
+    // revolution
+    this._revolutionSpeed = ((2 * Math.PI) / revolution.period) * 10;
+    this._revolutionSperical = new Spherical();
+    this._revolutionSperical.phi = Math.PI / 2;
+    this._revolutionSperical.theta = Math.random() * 2 * Math.PI; // random start
+    this._revolutionSperical.radius = revolution.radius;
+
+    // rotation
+    this.euler.z = (rotation.axis / 180) * Math.PI;
+    this._rotationSpeed = ((2 * Math.PI) / rotation.period) * 0.3;
   }
 
   update(deltaTime) {
-    this._currentTheta += this._orbitSpeed * deltaTime;
-    this._spherical.theta = this._currentTheta % (2 * Math.PI);
-    this.position.setFromSpherical(this._spherical);
+    // revolution
+    this._revolutionSperical.theta += this._revolutionSpeed * deltaTime;
+    this._revolutionSperical.theta =
+      this._revolutionSperical.theta % (2 * Math.PI);
+    this.position.setFromSpherical(this._revolutionSperical);
+
+    // rotation
+    this._mesh.euler.y += this._rotationSpeed * deltaTime;
   }
 }
 
@@ -147,14 +165,13 @@ class PlanetRing extends Mesh {
 
 class CircularOrbit extends Mesh {
   constructor(planetData) {
-    const { name, position } = planetData;
+    const { name, revolution } = planetData;
 
-    const radius = position[0];
     const geometry = new Geometry();
     const positions = [];
     for (let i = 0; i <= 360; i++) {
-      const x = radius * Math.cos((i / 180) * Math.PI);
-      const z = radius * Math.sin((i / 180) * Math.PI);
+      const x = revolution.radius * Math.cos((i / 180) * Math.PI);
+      const z = revolution.radius * Math.sin((i / 180) * Math.PI);
       positions.push(x, 0, z);
     }
     geometry.addAttribute(
