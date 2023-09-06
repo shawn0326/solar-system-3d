@@ -8,6 +8,9 @@ dependencies:
   t3d:
     specifier: ^0.2.0
     version: 0.2.0
+  t3d-effect-composer:
+    specifier: ^0.1.1
+    version: 0.1.1(t3d@0.2.0)
 
 devDependencies:
   prettier:
@@ -292,6 +295,14 @@ packages:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /t3d-effect-composer@0.1.1(t3d@0.2.0):
+    resolution: {integrity: sha512-AfXKHYA/dCZI8wkxTL2CQjfH26BUHhzFVv0fyaLlZGlTYp0YxrKbw1w07DNh0b+lPWTlJGyFwom1+BVVqEtJ4w==}
+    peerDependencies:
+      t3d: ^0.2.0
+    dependencies:
+      t3d: 0.2.0
+    dev: false
 
   /t3d@0.2.0:
     resolution: {integrity: sha512-srHVS1fEThBb7IZtTBS7hK7xW03iN5iDxN7eOZl9PkvKmfZf7AII7go1nQ2LMDRriyVla8yAFJavE+vTjHIRGw==}

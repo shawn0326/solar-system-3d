@@ -1,7 +1,7 @@
 {
   "name": "solar-system-3d",
   "version": "1.0.0",
-  "description": "",
+  "description": "A 3D solar system based on webgl.",
   "private": true,
   "type": "module",
   "scripts": {
@@ -16,6 +16,7 @@
     "vite": "^4.4.9"
   },
   "dependencies": {
-    "t3d": "^0.2.0"
+    "t3d": "^0.2.0",
+    "t3d-effect-composer": "^0.1.1"
   }
 }
