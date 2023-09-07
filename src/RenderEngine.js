@@ -84,7 +84,7 @@ export default class RenderEngine {
       scene.updateRenderStates(camera);
       scene.updateRenderQueue(camera);
 
-      renderer.setClearColor(0.1, 0.1, 0.1, 1);
+      renderer.setClearColor(0, 0, 0, 1);
       effectComposer.render(renderer, scene, camera, backRenderTarget);
     };
     requestAnimationFrame(loop);

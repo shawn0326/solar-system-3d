@@ -3,6 +3,7 @@ export default {
   stars: [
     {
       name: "sun",
+      color: 0xffab2c,
       texture: "./sun-moon-stars/2k_sun.jpg",
       size: 24,
       rotation: {
@@ -13,6 +14,7 @@ export default {
   planets: [
     {
       name: "mercury",
+      color: 0x5f5f5f,
       texture: "./planets/2k_mercury.jpg",
       size: 1.5,
       revolution: {
@@ -26,6 +28,7 @@ export default {
     },
     {
       name: "venus",
+      color: 0xecc584,
       texture: "./planets/2k_venus_atmosphere.jpg",
       size: 3.72,
       revolution: {
@@ -39,6 +42,7 @@ export default {
     },
     {
       name: "earth",
+      color: 0x1e3b75,
       texture: "./earth/2k_earth_daymap.jpg",
       size: 3.92,
       revolution: {
@@ -52,6 +56,7 @@ export default {
     },
     {
       name: "mars",
+      color: 0xed7040,
       texture: "./planets/2k_mars.jpg",
       size: 2.9,
       revolution: {
@@ -65,6 +70,7 @@ export default {
     },
     {
       name: "jupiter",
+      color: 0xbf9062,
       texture: "./planets/2k_jupiter.jpg",
       size: 12,
       revolution: {
@@ -78,6 +84,7 @@ export default {
     },
     {
       name: "saturn",
+      color: 0xf7dcaf,
       texture: "./planets/2k_saturn.jpg",
       size: 10.8,
       ring: "./planets/2k_saturn_ring_alpha.png",
@@ -92,6 +99,7 @@ export default {
     },
     {
       name: "uranus",
+      color: 0xa9dbe2,
       texture: "./planets/2k_uranus.jpg",
       size: 4.68,
       revolution: {
@@ -105,6 +113,7 @@ export default {
     },
     {
       name: "neptune",
+      color: 0x395abb,
       texture: "./planets/2k_neptune.jpg",
       size: 4.9,
       revolution: {

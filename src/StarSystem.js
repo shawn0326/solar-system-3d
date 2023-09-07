@@ -60,12 +60,18 @@ const textureLoader = new Texture2DLoader();
 
 class Star extends Object3D {
   constructor(starData) {
-    const { name, texture, size, rotation } = starData;
+    const { name, color, texture, size, rotation } = starData;
 
     const geometry = new SphereGeometry(1, 64, 32);
 
     const material = new BasicMaterial();
-    material.diffuseMap = textureLoader.load(texture);
+
+    material.diffuse.setHex(color);
+    textureLoader.loadAsync(texture).then((_texture) => {
+      material.diffuse.setHex(0xffffff);
+      material.diffuseMap = _texture;
+      material.needsUpdate = true;
+    });
 
     const mesh = new Mesh(geometry, material);
     mesh.name = name + "-mesh";
@@ -95,15 +101,22 @@ class Star extends Object3D {
 
 class Planet extends Object3D {
   constructor(planetData) {
-    const { name, texture, size, ring, revolution, rotation } = planetData;
+    const { name, color, texture, size, ring, revolution, rotation } =
+      planetData;
 
     const geometry = new SphereGeometry(size, 64, 32);
 
     const material = new PBRMaterial();
     material.metalness = 0.1;
     material.roughness = 0.8;
-    material.diffuseMap = textureLoader.load(texture);
-    material.diffuseMap.encoding = TEXEL_ENCODING_TYPE.SRGB;
+
+    material.diffuse.setHex(color);
+    textureLoader.loadAsync(texture).then((_texture) => {
+      material.diffuse.setHex(0xffffff);
+      material.diffuseMap = _texture;
+      material.diffuseMap.encoding = TEXEL_ENCODING_TYPE.SRGB;
+      material.needsUpdate = true;
+    });
 
     const mesh = new Mesh(geometry, material);
     mesh.name = name + "-mesh";
@@ -151,7 +164,7 @@ class PlanetRing extends Mesh {
     const material = new PBRMaterial();
     material.metalness = 0.3;
     material.roughness = 0.7;
-    material.emissive.setRGB(0.04, 0.04, 0.03);
+    material.emissive.setRGB(0.01, 0.01, 0.01);
     material.transparent = true;
     material.side = DRAW_SIDE.DOUBLE;
     material.diffuseMap = textureLoader.load(ring);
