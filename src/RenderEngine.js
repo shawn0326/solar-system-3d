@@ -43,25 +43,25 @@ export default class RenderEngine {
     });
     effectComposer.sceneMSAA = true;
 
+    const bloomEffect = new UnrealBloomEffect();
+    bloomEffect.strength = 0.3;
+    bloomEffect.threshold = 0.3;
+    bloomEffect.radius = 0.1;
+    bloomEffect.smoothWidth = 0.1;
+    effectComposer.addEffect("Bloom", bloomEffect, 100);
+
     const toneMappingEffect = new ToneMappingEffect();
     toneMappingEffect.toneMapping = ToneMappingType.ACESFilmic;
     toneMappingEffect.toneMappingExposure = 1;
     toneMappingEffect.outputColorSpace = TEXEL_ENCODING_TYPE.SRGB;
     effectComposer.addEffect("ToneMapping", toneMappingEffect, 199);
 
-    const bloomEffect = new UnrealBloomEffect();
-    bloomEffect.strength = 0.3;
-    bloomEffect.threshold = 0.3;
-    bloomEffect.radius = 0;
-    bloomEffect.smoothWidth = 0.1;
-    effectComposer.addEffect("Bloom", bloomEffect, 100);
-
     const backRenderTarget = new RenderTargetBack(canvas);
 
     const scene = new Scene();
 
     const camera = new Camera();
-    camera.position.set(0, 200, 800);
+    camera.position.set(0, 100, 500);
     camera.setPerspective((45 / 180) * Math.PI, width / height, 10, 10000);
     scene.add(camera);
 
