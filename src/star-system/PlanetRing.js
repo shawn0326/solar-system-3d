@@ -8,12 +8,14 @@ import {
   DRAW_SIDE,
 } from "t3d";
 import { Texture2DLoader } from "t3d/addons/loaders/Texture2DLoader.js";
+import { Scaler } from "./utils.js";
 
 export default class PlanetRing extends Mesh {
   constructor(planetData) {
     const { name, size, ring } = planetData;
 
-    const geometry = new RingGeometry(size * 1.1, size * 2.0);
+    const _size = Scaler.scalePlanetRadius(size) * 2;
+    const geometry = new RingGeometry(_size * 1.1, _size * 2.0);
 
     const material = new PBRMaterial();
     material.metalness = 0.3;

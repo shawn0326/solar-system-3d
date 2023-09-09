@@ -21,7 +21,8 @@ export default class Planet extends Object3D {
 
     const mesh = new Mesh(unitSphereGeometry, new PBRMaterial());
     mesh.name = name + "-mesh";
-    mesh.scale.set(size, size, size);
+    const _size = Scaler.scalePlanetRadius(size) * 2;
+    mesh.scale.set(_size, _size, _size);
     mesh.material.metalness = 0.2;
     mesh.material.roughness = 0.8;
     mesh.material.diffuse.setHex(color);

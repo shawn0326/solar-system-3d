@@ -18,6 +18,15 @@ export class Scaler {
   static scaleRevolutionRadius(radius) {
     return (
       radius * this.revolution.radius.scale + this.revolution.radius.offset
+      //   (Math.log(radius * 5) / Math.log(20)) * 200
     );
+  }
+
+  static scaleStarRadius(radius) {
+    return radius / 2;
+  }
+
+  static scalePlanetRadius(radius) {
+    return radius / 2;
   }
 }

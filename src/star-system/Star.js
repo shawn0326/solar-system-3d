@@ -8,7 +8,8 @@ export default class Star extends Object3D {
 
     const mesh = new Mesh(unitSphereGeometry, new BasicMaterial());
     mesh.name = name + "-mesh";
-    mesh.scale.set(size, size, size);
+    const _size = Scaler.scaleStarRadius(size) * 2;
+    mesh.scale.set(_size, _size, _size);
     mesh.material.diffuse.setHex(color);
     textureLoader.loadAsync(texture).then((_texture) => {
       mesh.material.diffuse.setHex(0xffffff);
@@ -16,10 +17,10 @@ export default class Star extends Object3D {
       mesh.material.needsUpdate = true;
     });
 
-    const pointLight = new PointLight(0xffffff, 1);
+    const pointLight = new PointLight(0xffffff, 0.8);
     pointLight.name = name + "-light";
     pointLight.distance = 900;
-    pointLight.decay = 0.2;
+    pointLight.decay = 0.4;
 
     super();
 
