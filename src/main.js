@@ -2,7 +2,7 @@ import { AmbientLight, TEXEL_ENCODING_TYPE } from "t3d";
 import { Texture2DLoader } from "t3d/addons/loaders/Texture2DLoader.js";
 import { SkyBox } from "t3d/addons/objects/SkyBox.js";
 import SolarSystemData from "./solar-system-data.js";
-import StarSystem from "./StarSystem.js";
+import StarSystem from "./star-system/StarSystem.js";
 import RenderEngine from "./RenderEngine.js";
 
 const renderEngine = new RenderEngine();
