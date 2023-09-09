@@ -11,7 +11,7 @@ import {
   Spherical,
 } from "t3d";
 import { Texture2DLoader } from "t3d/addons/loaders/Texture2DLoader.js";
-import { unitSphereGeometry } from "./utils.js";
+import { Scaler, unitSphereGeometry } from "./utils.js";
 import PlanetRing from "./PlanetRing.js";
 
 export default class Planet extends Object3D {
@@ -44,26 +44,30 @@ export default class Planet extends Object3D {
     }
 
     // revolution
-    this._revolutionSpeed = ((2 * Math.PI) / revolution.period) * 10;
+    this._revolutionSpeed = (2 * Math.PI) / revolution.period;
     this._revolutionSperical = new Spherical();
     this._revolutionSperical.phi = Math.PI / 2;
     this._revolutionSperical.theta = Math.random() * 2 * Math.PI; // random start
-    this._revolutionSperical.radius = revolution.radius;
+    this._revolutionSperical.radius = Scaler.scaleRevolutionRadius(
+      revolution.radius
+    );
 
     // rotation
     this.euler.z = (rotation.axis / 180) * Math.PI;
-    this._rotationSpeed = ((2 * Math.PI) / rotation.period) * 0.3;
+    this._rotationSpeed = (2 * Math.PI) / rotation.period;
   }
 
   update(deltaTime) {
     // revolution
-    this._revolutionSperical.theta += this._revolutionSpeed * deltaTime;
+    this._revolutionSperical.theta +=
+      Scaler.scaleRevolutionSpeed(this._revolutionSpeed) * deltaTime;
     this._revolutionSperical.theta =
       this._revolutionSperical.theta % (2 * Math.PI);
     this.position.setFromSpherical(this._revolutionSperical);
 
     // rotation
-    this._mesh.euler.y += this._rotationSpeed * deltaTime;
+    this._mesh.euler.y +=
+      Scaler.scaleRotationSpeed(this._rotationSpeed) * deltaTime;
   }
 
   showRotationAxis() {

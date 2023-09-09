@@ -6,21 +6,19 @@ import {
   Buffer,
   DRAW_MODE,
 } from "t3d";
+import { Scaler } from "./utils.js";
 
 export default class CircularOrbit extends Mesh {
   constructor(planetData) {
     const { name, revolution } = planetData;
 
     const material = new BasicMaterial();
-    material.diffuse.setRGB(
-      (1 - revolution.radius / 250) * 0.2,
-      (1 - revolution.radius / 250) * 0.2,
-      (1 - revolution.radius / 250) * 0.2
-    );
+    material.diffuse.setRGB(0.1, 0.1, 0.1);
     material.drawMode = DRAW_MODE.LINE_STRIP;
 
     super(_unitCircularOrbitGeometry, material);
-    this.scale.set(revolution.radius, 1, revolution.radius);
+    const _radius = Scaler.scaleRevolutionRadius(revolution.radius);
+    this.scale.set(_radius, 1, _radius);
 
     this.name = name + "-orbit";
   }

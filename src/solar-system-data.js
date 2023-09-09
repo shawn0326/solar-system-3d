@@ -1,3 +1,6 @@
+// revolution.period, rotation.period - unit is Earth day
+// revolution.radius - unit is A.U., 1 A.U. = 149597870.7 km
+
 export default {
   name: "solar-system",
   stars: [
@@ -19,7 +22,7 @@ export default {
       size: 1.5,
       revolution: {
         period: 87.97,
-        radius: 40,
+        radius: 0.38,
       },
       rotation: {
         period: 58.646,
@@ -33,7 +36,7 @@ export default {
       size: 3.72,
       revolution: {
         period: 224.7,
-        radius: 55,
+        radius: 0.72,
       },
       rotation: {
         period: 243,
@@ -47,7 +50,7 @@ export default {
       size: 3.92,
       revolution: {
         period: 365.24,
-        radius: 70,
+        radius: 1,
       },
       rotation: {
         period: 0.99726968,
@@ -61,7 +64,7 @@ export default {
       size: 2.9,
       revolution: {
         period: 686.93,
-        radius: 90,
+        radius: 1.52,
       },
       rotation: {
         period: 1.026,
@@ -75,7 +78,7 @@ export default {
       size: 12,
       revolution: {
         period: 11.8565 * 365,
-        radius: 120,
+        radius: 5.2,
       },
       rotation: {
         period: 0.41354,
@@ -90,7 +93,7 @@ export default {
       ring: "./planets/2k_saturn_ring_alpha.png",
       revolution: {
         period: 29.448 * 365,
-        radius: 160,
+        radius: 9.54,
       },
       rotation: {
         period: 0.44401,
@@ -104,7 +107,7 @@ export default {
       size: 4.68,
       revolution: {
         period: 84.02 * 365,
-        radius: 190,
+        radius: 19.2,
       },
       rotation: {
         period: 0.718,
@@ -118,7 +121,7 @@ export default {
       size: 4.9,
       revolution: {
         period: 164.79 * 365,
-        radius: 220,
+        radius: 30.05,
       },
       rotation: {
         period: 0.67125,

@@ -1,6 +1,6 @@
 import { Object3D, BasicMaterial, Mesh, PointLight } from "t3d";
 import { Texture2DLoader } from "t3d/addons/loaders/Texture2DLoader.js";
-import { unitSphereGeometry } from "./utils.js";
+import { Scaler, unitSphereGeometry } from "./utils.js";
 
 export default class Star extends Object3D {
   constructor(starData) {
@@ -16,10 +16,10 @@ export default class Star extends Object3D {
       mesh.material.needsUpdate = true;
     });
 
-    const pointLight = new PointLight(0xffffff, 1.2);
+    const pointLight = new PointLight(0xffffff, 1);
     pointLight.name = name + "-light";
-    pointLight.distance = 300;
-    pointLight.decay = 0.8;
+    pointLight.distance = 900;
+    pointLight.decay = 0.2;
 
     super();
 
@@ -29,12 +29,12 @@ export default class Star extends Object3D {
     this.add(pointLight);
 
     // rotation
-    this._rotationSpeed = ((2 * Math.PI) / rotation.period) * 0.3;
+    this._rotationSpeed = (2 * Math.PI) / rotation.period;
   }
 
   update(deltaTime) {
     // rotation
-    this.euler.y += this._rotationSpeed * deltaTime;
+    this.euler.y += Scaler.scaleRotationSpeed(this._rotationSpeed) * deltaTime;
   }
 }
 
