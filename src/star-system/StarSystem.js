@@ -2,6 +2,7 @@ import { Object3D } from "t3d";
 import Star from "./Star.js";
 import Planet from "./Planet.js";
 import CircularOrbit from "./CircularOrbit.js";
+import AsteroidBelt from "./AsteroidBelt.js";
 
 export default class StarSystem extends Object3D {
   constructor(data) {
@@ -30,6 +31,10 @@ export default class StarSystem extends Object3D {
       this.orbitsContainer.add(new CircularOrbit(planetData));
     });
 
+    // TODO add multiple asteroid belts - Main belt, Kuiper belt...
+    this.asteroidBelt = new AsteroidBelt();
+    this.add(this.asteroidBelt);
+
     console.log(this);
   }
 
@@ -40,5 +45,6 @@ export default class StarSystem extends Object3D {
     this.planetsContainer.children.forEach((planet) => {
       planet.update(deltaTime);
     });
+    this.asteroidBelt.update(deltaTime);
   }
 }
