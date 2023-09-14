@@ -17,9 +17,9 @@ export default class Star extends Object3D {
       mesh.material.needsUpdate = true;
     });
 
-    const pointLight = new PointLight(0xffffff, 0.8);
+    const pointLight = new PointLight(0xffffff, 1);
     pointLight.name = name + "-light";
-    pointLight.distance = 900;
+    pointLight.distance = 1229;
     pointLight.decay = 0.4;
 
     super();

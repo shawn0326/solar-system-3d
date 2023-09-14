@@ -139,4 +139,24 @@ export default {
       },
     },
   ],
+  belts: [
+    {
+      name: "main belt",
+      model: "./asteroid.glb",
+      emissive: 0x010101,
+      count: 500,
+      radius: [2.17, 3.64],
+      scale: [1.9, 0.1],
+      height: 10,
+    },
+    {
+      name: "kuiper belt",
+      model: "./asteroid.glb",
+      emissive: 0x080808,
+      count: 1000,
+      radius: [30.1, 50.3],
+      scale: [2.0, 2.0],
+      height: 50,
+    },
+  ],
 };

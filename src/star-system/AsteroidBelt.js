@@ -1,32 +1,30 @@
 import { Object3D } from "t3d";
 import { GLTFLoader } from "t3d/addons/loaders/gltf/GLTFLoader.js";
+import { Scaler } from "./utils.js";
 
 export default class AsteroidBelt extends Object3D {
-  constructor() {
+  constructor(beltData) {
     super();
 
     this.name = "asteroid-belt";
 
     // TODO read from data
-
-    const asteroidCount = 500;
-    const innerRadius = 70;
-    const outerRadius = 120;
-    const height = 10;
-    const gltfUri = "./asteroid.glb";
+    const innerRadius = Scaler.scaleRevolutionRadius(beltData.radius[0]);
+    const outerRadius = Scaler.scaleRevolutionRadius(beltData.radius[1]);
+    const height = beltData.height;
 
     const deltaRadius = outerRadius - innerRadius;
     const halfHeight = height / 2;
 
     _gltfLoader
-      .load(gltfUri)
+      .load(beltData.model)
       .then((result) => {
         const { root } = result;
-        root.children[0].material.emissive.setRGB(0.02, 0.02, 0.02);
+        root.children[0].material.emissive.setHex(beltData.emissive);
 
         // TODO use instanced mesh
 
-        for (let i = 0; i < asteroidCount; i++) {
+        for (let i = 0; i < beltData.count; i++) {
           const asteroid = root.clone();
 
           const ratio = Math.random();
@@ -48,7 +46,8 @@ export default class AsteroidBelt extends Object3D {
           asteroid.quaternion.w = Math.random() * 2 - 1;
           asteroid.quaternion.normalize();
 
-          const mainScale = Math.random() * 1.9 + 0.1;
+          const mainScale =
+            Math.random() * beltData.scale[0] + beltData.scale[1];
           asteroid.scale.x = (Math.random() * 0.5 + 0.5) * mainScale;
           asteroid.scale.y = (Math.random() * 0.5 + 0.5) * mainScale;
           asteroid.scale.z = (Math.random() * 0.5 + 0.5) * mainScale;

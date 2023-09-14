@@ -22,6 +22,10 @@ export default class StarSystem extends Object3D {
     this.orbitsContainer.name = data.name + "-orbits-container";
     this.add(this.orbitsContainer);
 
+    this.beltsContainer = new Object3D();
+    this.beltsContainer.name = data.name + "-belts-container";
+    this.add(this.beltsContainer);
+
     data.stars.forEach((starData) => {
       this.starsContainer.add(new Star(starData));
     });
@@ -31,9 +35,9 @@ export default class StarSystem extends Object3D {
       this.orbitsContainer.add(new CircularOrbit(planetData));
     });
 
-    // TODO add multiple asteroid belts - Main belt, Kuiper belt...
-    this.asteroidBelt = new AsteroidBelt();
-    this.add(this.asteroidBelt);
+    data.belts.forEach((beltData) => {
+      this.beltsContainer.add(new AsteroidBelt(beltData));
+    });
 
     console.log(this);
   }
@@ -45,6 +49,8 @@ export default class StarSystem extends Object3D {
     this.planetsContainer.children.forEach((planet) => {
       planet.update(deltaTime);
     });
-    this.asteroidBelt.update(deltaTime);
+    this.beltsContainer.children.forEach((belt) => {
+      belt.update(deltaTime);
+    });
   }
 }

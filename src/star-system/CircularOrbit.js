@@ -13,7 +13,7 @@ export default class CircularOrbit extends Mesh {
     const { name, revolution } = planetData;
 
     const material = new BasicMaterial();
-    material.diffuse.setRGB(0.1, 0.1, 0.1);
+    material.diffuse.setHex(0x080808);
     material.drawMode = DRAW_MODE.LINE_STRIP;
 
     super(_unitCircularOrbitGeometry, material);
