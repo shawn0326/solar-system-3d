@@ -11,7 +11,7 @@ import {
   ToneMappingEffect,
   ToneMappingType,
 } from "t3d-effect-composer";
-import UnrealBloomEffect from "./UnrealBloomEffect.js";
+import UnrealBloomEffect from "./vendors/UnrealBloomEffect.js";
 
 export default class RenderEngine {
   constructor() {

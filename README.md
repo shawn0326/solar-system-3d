@@ -12,8 +12,8 @@ A 3D solar system based on webgl. Dedicated to my son Yifan :family:.
 - [x] Planetary Rotation
 - [] Loading
 - [] Moon
-- [] Asteroid Belt
-- [] Kuiper Belt
+- [x] Asteroid Belt
+- [x] Kuiper Belt
 - [] Camera Focus
 - [] Information Panel
 - [] Planetary Atmosphere
