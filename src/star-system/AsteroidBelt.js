@@ -9,7 +9,7 @@ import {
   Euler,
   BUFFER_USAGE,
 } from "t3d";
-import { GLTFLoader } from "t3d/addons/loaders/gltf/GLTFLoader.js";
+import { GLTFLoader } from "t3d/addons/loaders/glTF/GLTFLoader.js";
 import { Scaler } from "./utils.js";
 import { InstancedPBRMaterial } from "../vendors/InstancedPBRMaterial.js";
 
