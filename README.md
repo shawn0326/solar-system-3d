@@ -1,8 +1,8 @@
 # Solar System 3D
 
-developing ~~~
-
 A 3D solar system based on webgl. Dedicated to my son Yifan :family:. 
+
+Visit https://shawn0326.github.io/solar-system-3d/ on mobile phone or computer.
 
 ![screenshot](./screenshot.png)
 
@@ -10,13 +10,13 @@ A 3D solar system based on webgl. Dedicated to my son Yifan :family:.
 
 - [x] Sun And Plants
 - [x] Planetary Rotation
-- [] Loading
-- [] Moon
+- [ ] Loading
+- [ ] Moon
 - [x] Asteroid Belt
 - [x] Kuiper Belt
-- [] Camera Focus
-- [] Information Panel
-- [] Planetary Atmosphere
+- [ ] Camera Focus
+- [ ] Information Panel
+- [ ] Planetary Atmosphere
 
 ## Thanks for sharing textures
 
