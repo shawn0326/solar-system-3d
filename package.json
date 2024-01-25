@@ -12,11 +12,11 @@
   "author": "shawn0326",
   "license": "MIT",
   "devDependencies": {
-    "prettier": "^3.0.3",
-    "vite": "^4.4.9"
+    "prettier": "^3.2.4",
+    "vite": "^4.5.2"
   },
   "dependencies": {
-    "t3d": "^0.2.0",
+    "t3d": "^0.2.3",
     "t3d-effect-composer": "^0.1.1"
   }
 }
